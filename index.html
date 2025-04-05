@@ -177,6 +177,82 @@
             }
         }
 
+        @media (max-width: 540px) {
+            /* Menú hamburguesa */
+            .menu {
+                width: 100%;
+                height: auto;
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: #1a252f;
+                padding: 10px;
+                display: none;
+                z-index: 999;
+            }
+
+            .menu.open {
+                display: block;
+            }
+
+            .menu a {
+                font-size: 1em;
+                padding: 10px;
+                margin: 5px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+                background: #1a252f;
+                color: white;
+                padding: 10px;
+                font-size: 1.5em;
+                text-align: center;
+                cursor: pointer;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 1000;
+            }
+
+            /* El contenido baja un poco para no quedar debajo del menú toggle */
+            .contenido {
+                margin-top: 60px;
+                margin-left: 0;
+                width: 100%;
+                padding: 15px;
+                box-sizing: border-box;
+            }
+
+            .certificados-container {
+                grid-template-columns: 1fr;
+            }
+
+            .certificado iframe {
+                height: auto;
+                min-height: 150px;
+            }
+
+            h1 {
+                font-size: 1.4em;
+            }
+
+            .certificado h2 {
+                font-size: 1.1em;
+            }
+
+            .certificado p {
+                font-size: 0.9em;
+            }
+
+            .modal iframe {
+                width: 95%;
+                height: 70%;
+            }
+        }
+
+
     </style>
 </head>
 <body>
