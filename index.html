@@ -129,6 +129,43 @@
             cursor: pointer;
         }
 
+        /*  */
+        /* .iframe-container {
+            position: relative;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .iframe-container iframe {
+            transition: transform 0.3s ease;
+            transform-origin: top center;
+            width: 100%;
+            height: 80vh;
+        } */
+
+        .iframe-container {
+            position: relative;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .iframe-container iframe {
+            transition: transform 0.3s ease;
+            transform-origin: top center;
+            width: 100%;
+            height: 40vh;
+        }
+
+        /* Botones opcionales */
+        .iframe-container button {
+            margin: 5px;
+            padding: 4px 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        /*  */
+
         /* Responsive para pantallas menores a 600px */
         @media (max-width: 600px) {
             /* Botón de menú hamburguesa */
@@ -291,32 +328,57 @@
         <div class="certificados-container">
             <div id="cert1" class="certificado" onclick="openModal('pdf1')">
                 <h2>Certificado de Estudios</h2>
-                <iframe id="pdf1" src="Breiner Correa Atucsa - DIPLOMA DE BACHILLER - UNMSM.pdf"></iframe>
+                <!-- <iframe id="pdf1" src="Breiner Correa Atucsa - DIPLOMA DE BACHILLER - UNMSM.pdf"></iframe> -->
+                <div class="iframe-container" data-target="pdf1">
+                    <button onclick="zoomIframe(this, -0.1)">➖</button>
+                    <button onclick="zoomIframe(this, 0.1)">➕</button>
+                    <iframe id="pdf1" src="Breiner Correa Atucsa - DIPLOMA DE BACHILLER - UNMSM.pdf"></iframe>
+                </div>
                 <p>Certificado de bachiller en Ingeniería de Sistemas.</p>
             </div>
            
 
             <div id="cert2" class="certificado" onclick="openModal('pdf2')">
                 <h2>Desarrollo Seguro</h2>
-                <iframe id="pdf2" src="Desarrollo Seguro.pdf"></iframe>
+                <!-- <iframe id="pdf2" src="Desarrollo Seguro.pdf"></iframe> -->
+                <div class="iframe-container" data-target="pdf2">
+                    <button onclick="zoomIframe(this, -0.1)">➖</button>
+                    <button onclick="zoomIframe(this, 0.1)">➕</button>
+                    <iframe id="pdf2" src="Desarrollo Seguro.pdf"></iframe>
+                </div>
                 <p>Certificación en prácticas seguras de desarrollo de software.</p>
             </div>
 
             <div id="cert3" class="certificado" onclick="openModal('pdf3')">
                 <h2>Certificado Scrum Fundamentals</h2>
-                <iframe id="pdf3" src="ScrumFundamentalsCertified-BreinerRoiserCorreaAtucsa-902335.pdf"></iframe>
+                <!-- <iframe id="pdf3" src="ScrumFundamentalsCertified-BreinerRoiserCorreaAtucsa-902335.pdf"></iframe> -->
+                <div class="iframe-container" data-target="pdf3">
+                    <button onclick="zoomIframe(this, -0.1)">➖</button>
+                    <button onclick="zoomIframe(this, 0.1)">➕</button>
+                    <iframe id="pdf3" src="ScrumFundamentalsCertified-BreinerRoiserCorreaAtucsa-902335.pdf"></iframe>
+                </div>
                 <p>Fundamentos de metodologías ágiles con Scrum.</p>
             </div>
 
             <div id="cert4" class="certificado" onclick="openModal('pdf4')">
                 <h2>Certificación Arquitectura SOA</h2>
-                <iframe id="pdf4" src="Service-Oriented%20Architecture-cursera.pdf"></iframe>
+                <!-- <iframe id="pdf4" src="Service-Oriented%20Architecture-cursera.pdf"></iframe> -->
+                <div class="iframe-container" data-target="pdf4">
+                    <button onclick="zoomIframe(this, -0.1)">➖</button>
+                    <button onclick="zoomIframe(this, 0.1)">➕</button>
+                    <iframe id="pdf4" src="Service-Oriented%20Architecture-cursera.pdf"></iframe>
+                </div>
                 <p>Conceptos y aplicación de Arquitectura Orientada a Servicios.</p>
             </div>
 
             <div id="cert5" class="certificado" onclick="openModal('pdf5')">
                 <h2>Certificación Internet de las cosas</h2>
-                <iframe id="pdf5" src="Internet de las cosas-cursera.pdf"></iframe>
+                <!-- <iframe id="pdf5" src="Internet de las cosas-cursera.pdf"></iframe> -->
+                <div class="iframe-container" data-target="pdf5">
+                    <button onclick="zoomIframe(this, -0.1)">➖</button>
+                    <button onclick="zoomIframe(this, 0.1)">➕</button>
+                    <iframe id="pdf5" src="Internet de las cosas-cursera.pdf"></iframe>
+                </div>
                 <p>Principios y aplicaciones del IoT.</p>
             </div>
         </div>
@@ -331,6 +393,24 @@
     </div>
 
     <script>
+        const zoomLevels = {}; // Almacena el zoom individual por iframe
+
+        function zoomIframe(button, amount) {
+            const container = button.closest(".iframe-container");
+            const iframeId = container.getAttribute("data-target");
+            const iframe = document.getElementById(iframeId);
+
+            // Inicializar si no existe
+            if (!zoomLevels[iframeId]) zoomLevels[iframeId] = 1;
+
+            // Actualizar zoom
+            zoomLevels[iframeId] += amount;
+            if (zoomLevels[iframeId] < 0.5) zoomLevels[iframeId] = 0.5;
+            if (zoomLevels[iframeId] > 2) zoomLevels[iframeId] = 2;
+
+            iframe.style.transform = `scale(${zoomLevels[iframeId]})`;
+        }
+
         function toggleMenu() {
             document.querySelector(".menu").classList.toggle("open");
         }
@@ -347,8 +427,8 @@
         };
 
         function openModal(pdfId) {
-            document.getElementById("modal-pdf").src = document.getElementById(pdfId).src;
-            document.getElementById("modal").style.display = "flex";
+            /* document.getElementById("modal-pdf").src = document.getElementById(pdfId).src;
+            document.getElementById("modal").style.display = "flex"; */
         }
 
         function closeModal() {
