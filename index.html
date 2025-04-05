@@ -169,7 +169,7 @@
         .zoom-container {
             width: 100%;
             overflow: auto;
-            border: 1px solid #ccc;
+            /* border: 1px solid #ccc; */
             position: relative;
             margin-bottom: 30px;
             touch-action: auto; /* importante para gestos móviles */
@@ -205,7 +205,7 @@
         }
 
         .zoom-content img {
-            max-width: 100%;
+            max-width: 90%;
             height: auto;
         }
 
@@ -218,7 +218,7 @@
             gap: 20px;
             padding: 20px;
             width: 100%; /* Ajusta el ancho según sea necesario */
-            height: 400px; /* Tamaño fijo */
+            height: 200px; /* Tamaño fijo */
             overflow-y: auto; /* Habilita el scroll vertical */
             overflow-x: hidden; /* Evita el scroll horizontal */
         }
@@ -403,66 +403,71 @@
         <div class="certificados-container">
             <div id="cert1" class="certificado" onclick="openModal('pdf1')">
                 <h2>Certificado de Estudios</h2>
-                <!-- <iframe id="pdf1" src="Breiner Correa Atucsa - DIPLOMA DE BACHILLER - UNMSM.pdf"></iframe> -->
                 <div class="zoom-container" id="zoomContainer1">
-                    <!-- Controles visibles solo en desktop -->
                     <div class="zoom-controls">
                         <button onclick="zoomImage('zoomContainer1', -0.1)">➖</button>
                         <button onclick="zoomImage('zoomContainer1', 0.1)">➕</button>
                     </div>
-                
-                    <!-- Contenedor con scroll y zoom nativo permitido -->
                     <div class="zoom-content">
                         <img src="bachiller/Breiner Correa Atucsa - DIPLOMA DE BACHILLER - UNMSM_page-0001.jpg" alt="Certificado 1">
-                        <img src="bachiller/Breiner Correa Atucsa - DIPLOMA DE BACHILLER - UNMSM_page-0002.jpg" alt="Certificado 2">
-                        <img src="bachiller/Breiner Correa Atucsa - DIPLOMA DE BACHILLER - UNMSM_page-0002.jpg" alt="Certificado 2">
                         <img src="bachiller/Breiner Correa Atucsa - DIPLOMA DE BACHILLER - UNMSM_page-0002.jpg" alt="Certificado 2">
                     </div>
                 </div>
                 <p>Certificado de bachiller en Ingeniería de Sistemas.</p>
             </div>
-           
-
+            
             <div id="cert2" class="certificado" onclick="openModal('pdf2')">
                 <h2>Desarrollo Seguro</h2>
-                <!-- <iframe id="pdf2" src="Desarrollo Seguro.pdf"></iframe> -->
-                <div class="iframe-container" data-target="pdf2">
-                    <button onclick="zoomIframe(this, -0.1)">➖</button>
-                    <button onclick="zoomIframe(this, 0.1)">➕</button>
-                    <iframe id="pdf2" src="Desarrollo Seguro.pdf"></iframe>
+                <div class="zoom-container" id="zoomContainer2">
+                    <div class="zoom-controls">
+                        <button onclick="zoomImage('zoomContainer2', -0.1)">➖</button>
+                        <button onclick="zoomImage('zoomContainer2', 0.1)">➕</button>
+                    </div>
+                    <div class="zoom-content">
+                        <img src="Desarrollo Seguro.jpg" alt="Certificado Desarrollo Seguro">
+                    </div>
                 </div>
                 <p>Certificación en prácticas seguras de desarrollo de software.</p>
             </div>
-
+            
             <div id="cert3" class="certificado" onclick="openModal('pdf3')">
                 <h2>Certificado Scrum Fundamentals</h2>
-                <!-- <iframe id="pdf3" src="ScrumFundamentalsCertified-BreinerRoiserCorreaAtucsa-902335.pdf"></iframe> -->
-                <div class="iframe-container" data-target="pdf3">
-                    <button onclick="zoomIframe(this, -0.1)">➖</button>
-                    <button onclick="zoomIframe(this, 0.1)">➕</button>
-                    <iframe id="pdf3" src="ScrumFundamentalsCertified-BreinerRoiserCorreaAtucsa-902335.pdf"></iframe>
+                <div class="zoom-container" id="zoomContainer3">
+                    <div class="zoom-controls">
+                        <button onclick="zoomImage('zoomContainer3', -0.1)">➖</button>
+                        <button onclick="zoomImage('zoomContainer3', 0.1)">➕</button>
+                    </div>
+                    <div class="zoom-content">
+                        <img src="ScrumFundamentalsCertified-BreinerRoiserCorreaAtucsa-902335.jpg" alt="Certificado Scrum Fundamentals">
+                    </div>
                 </div>
                 <p>Fundamentos de metodologías ágiles con Scrum.</p>
             </div>
-
+            
             <div id="cert4" class="certificado" onclick="openModal('pdf4')">
                 <h2>Certificación Arquitectura SOA</h2>
-                <!-- <iframe id="pdf4" src="Service-Oriented%20Architecture-cursera.pdf"></iframe> -->
-                <div class="iframe-container" data-target="pdf4">
-                    <button onclick="zoomIframe(this, -0.1)">➖</button>
-                    <button onclick="zoomIframe(this, 0.1)">➕</button>
-                    <iframe id="pdf4" src="Service-Oriented%20Architecture-cursera.pdf"></iframe>
+                <div class="zoom-container" id="zoomContainer4">
+                    <div class="zoom-controls">
+                        <button onclick="zoomImage('zoomContainer4', -0.1)">➖</button>
+                        <button onclick="zoomImage('zoomContainer4', 0.1)">➕</button>
+                    </div>
+                    <div class="zoom-content">
+                        <img src="Service-Oriented Architecture.jpg" alt="Certificado Arquitectura SOA">
+                    </div>
                 </div>
                 <p>Conceptos y aplicación de Arquitectura Orientada a Servicios.</p>
             </div>
-
+            
             <div id="cert5" class="certificado" onclick="openModal('pdf5')">
                 <h2>Certificación Internet de las cosas</h2>
-                <!-- <iframe id="pdf5" src="Internet de las cosas-cursera.pdf"></iframe> -->
-                <div class="iframe-container" data-target="pdf5">
-                    <button onclick="zoomIframe(this, -0.1)">➖</button>
-                    <button onclick="zoomIframe(this, 0.1)">➕</button>
-                    <iframe id="pdf5" src="Internet de las cosas-cursera.pdf"></iframe>
+                <div class="zoom-container" id="zoomContainer5">
+                    <div class="zoom-controls">
+                        <button onclick="zoomImage('zoomContainer5', -0.1)">➖</button>
+                        <button onclick="zoomImage('zoomContainer5', 0.1)">➕</button>
+                    </div>
+                    <div class="zoom-content">
+                        <img src="Internet de las cosas.jpg" alt="Certificado IoT">
+                    </div>
                 </div>
                 <p>Principios y aplicaciones del IoT.</p>
             </div>
