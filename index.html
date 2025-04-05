@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Certificados</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            background: #f4f4f4;
+        }
+
+        /* Menú lateral */
+        .menu {
+            width: 18%;
+            background: #1a252f;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+        }
+
+        .menu h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .menu a:hover, .menu a.active {
+            background: #34495e;
+        }
+
+        /* Contenido principal */
+        .contenido {
+            margin-left: 20%;
+            padding: 40px;
+            width: 74.5%;
+            background: #fff;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        /* Certificados en Grid */
+        .certificados-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .certificado {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .certificado:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .certificado h2 {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .certificado iframe {
+            width: 100%;
+            height: 150px;
+            border-radius: 5px;
+        }
+
+        .certificado p {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal iframe {
+            width: 80%;
+            height: 80%;
+            border-radius: 10px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Responsive para pantallas menores a 600px */
+        @media (max-width: 600px) {
+            /* Botón de menú hamburguesa */
+            .menu {
+                width: 100%;
+                height: auto;
+                position: fixed;
+                top: 0;
+                left: 0;
+                text-align: center;
+                padding: 10px;
+                display: none;
+            }
+
+            .menu a {
+                display: block;
+                padding: 10px;
+                margin: 5px;
+            }
+
+            .menu.open {
+                display: block;
+            }
+
+            /* Botón de menú */
+            .menu-toggle {
+                display: block;
+                background: #1a252f;
+                color: white;
+                text-align: center;
+                padding: 10px;
+                font-size: 1.5em;
+                cursor: pointer;
+            }
+
+            /* Contenido ocupa toda la pantalla */
+            .contenido {
+                margin-left: 0;
+                width: 100%;
+                padding: 20px;
+            }
+
+            /* Certificados en una sola columna */
+            .certificados-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰ Menú</div>
+
+    <!-- Menú lateral -->
+    <nav class="menu">
+        <h2>Índice</h2>
+        <a href="#cert1">Certificado de Estudios</a>
+        <a href="#cert2">Desarrollo Seguro</a>
+        <a href="#cert3">Certificado Scrum Fundamentals</a>
+        <a href="#cert4">Certificación Arquitectura SOA</a>
+        <a href="#cert5">Certificación IoT</a>
+    </nav>
+
+    <!-- Contenido -->
+    <div class="contenido">
+        <h1>Mis Certificados</h1>
+        
+        <div class="certificados-container">
+            <div id="cert1" class="certificado" onclick="openModal('pdf1')">
+                <h2>Certificado de Estudios</h2>
+                <iframe id="pdf1" src="Breiner Correa Atucsa - DIPLOMA DE BACHILLER - UNMSM.pdf"></iframe>
+                <p>Certificado de bachiller en Ingeniería de Sistemas.</p>
+            </div>
+           
+
+            <div id="cert2" class="certificado" onclick="openModal('pdf2')">
+                <h2>Desarrollo Seguro</h2>
+                <iframe id="pdf2" src="Desarrollo Seguro.pdf"></iframe>
+                <p>Certificación en prácticas seguras de desarrollo de software.</p>
+            </div>
+
+            <div id="cert3" class="certificado" onclick="openModal('pdf3')">
+                <h2>Certificado Scrum Fundamentals</h2>
+                <iframe id="pdf3" src="ScrumFundamentalsCertified-BreinerRoiserCorreaAtucsa-902335.pdf"></iframe>
+                <p>Fundamentos de metodologías ágiles con Scrum.</p>
+            </div>
+
+            <div id="cert4" class="certificado" onclick="openModal('pdf4')">
+                <h2>Certificación Arquitectura SOA</h2>
+                <iframe id="pdf4" src="Service-Oriented%20Architecture-cursera.pdf"></iframe>
+                <p>Conceptos y aplicación de Arquitectura Orientada a Servicios.</p>
+            </div>
+
+            <div id="cert5" class="certificado" onclick="openModal('pdf5')">
+                <h2>Certificación Internet de las cosas</h2>
+                <iframe id="pdf5" src="Internet de las cosas-cursera.pdf"></iframe>
+                <p>Principios y aplicaciones del IoT.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!--  -->
+    <!-- Modal para ampliar PDFs -->
+    <div id="modal" class="modal" onclick="closeModal()">
+        <span class="close-modal">&times;</span>
+        <iframe id="modal-pdf"></iframe>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector(".menu").classList.toggle("open");
+        }
+
+        // Cerrar el menú cuando se haga clic fuera de él
+        window.onclick = function(event) {
+            var menu = document.querySelector(".menu");
+            var toggleButton = document.querySelector(".menu-toggle");
+
+            // Si el clic NO es dentro del menú ni del botón de menú, lo cierra
+            if (!menu.contains(event.target) && !toggleButton.contains(event.target)) {
+                menu.classList.remove("open");
+            }
+        };
+
+        function openModal(pdfId) {
+            document.getElementById("modal-pdf").src = document.getElementById(pdfId).src;
+            document.getElementById("modal").style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+        // Resalta la sección activa del menú al hacer scroll
+        window.addEventListener("scroll", function() {
+            let sections = document.querySelectorAll(".certificado");
+            let menuLinks = document.querySelectorAll(".menu a");
+
+            sections.forEach((section, index) => {
+                let rect = section.getBoundingClientRect();
+                if (rect.top >= 0 && rect.top <= 200) {
+                    menuLinks.forEach(link => link.classList.remove("active"));
+                    menuLinks[index].classList.add("active");
+                }
+            });
+        });
+    </script>
+    <!--  -->
+
+</body>
+</html>
