@@ -164,6 +164,81 @@
             cursor: pointer;
         }
 
+
+        /*  */
+        .zoom-container {
+            width: 100%;
+            overflow: auto;
+            border: 1px solid #ccc;
+            position: relative;
+            margin-bottom: 30px;
+            touch-action: auto; /* importante para gestos móviles */
+        }
+
+        .zoom-controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+            background: rgba(0,0,0,0.6);
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .zoom-controls button {
+            font-size: 20px;
+            margin: 0 5px;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .zoom-content {
+            transform: scale(1);
+            transform-origin: top left;
+            transition: transform 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .zoom-content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .zoom-content {
+            transform: scale(1);
+            transform-origin: top left;
+            transition: transform 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+            width: 100%; /* Ajusta el ancho según sea necesario */
+            height: 400px; /* Tamaño fijo */
+            overflow-y: auto; /* Habilita el scroll vertical */
+            overflow-x: hidden; /* Evita el scroll horizontal */
+        }
+
+        .zoom-controls {
+            position: sticky;
+            top: 10px; /* Mantén los botones a 10px del borde superior del contenedor */
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        /* Oculta los botones en móviles */
+        @media (max-width: 600px) {
+            .zoom-controls {
+                display: none;
+            }
+        }
+
         /*  */
 
         /* Responsive para pantallas menores a 600px */
@@ -329,10 +404,20 @@
             <div id="cert1" class="certificado" onclick="openModal('pdf1')">
                 <h2>Certificado de Estudios</h2>
                 <!-- <iframe id="pdf1" src="Breiner Correa Atucsa - DIPLOMA DE BACHILLER - UNMSM.pdf"></iframe> -->
-                <div class="iframe-container" data-target="pdf1">
-                    <button onclick="zoomIframe(this, -0.1)">➖</button>
-                    <button onclick="zoomIframe(this, 0.1)">➕</button>
-                    <iframe id="pdf1" src="Breiner Correa Atucsa - DIPLOMA DE BACHILLER - UNMSM.pdf"></iframe>
+                <div class="zoom-container" id="zoomContainer1">
+                    <!-- Controles visibles solo en desktop -->
+                    <div class="zoom-controls">
+                        <button onclick="zoomImage('zoomContainer1', -0.1)">➖</button>
+                        <button onclick="zoomImage('zoomContainer1', 0.1)">➕</button>
+                    </div>
+                
+                    <!-- Contenedor con scroll y zoom nativo permitido -->
+                    <div class="zoom-content">
+                        <img src="bachiller/Breiner Correa Atucsa - DIPLOMA DE BACHILLER - UNMSM_page-0001.jpg" alt="Certificado 1">
+                        <img src="bachiller/Breiner Correa Atucsa - DIPLOMA DE BACHILLER - UNMSM_page-0002.jpg" alt="Certificado 2">
+                        <img src="bachiller/Breiner Correa Atucsa - DIPLOMA DE BACHILLER - UNMSM_page-0002.jpg" alt="Certificado 2">
+                        <img src="bachiller/Breiner Correa Atucsa - DIPLOMA DE BACHILLER - UNMSM_page-0002.jpg" alt="Certificado 2">
+                    </div>
                 </div>
                 <p>Certificado de bachiller en Ingeniería de Sistemas.</p>
             </div>
@@ -409,6 +494,15 @@
             if (zoomLevels[iframeId] > 2) zoomLevels[iframeId] = 2;
 
             iframe.style.transform = `scale(${zoomLevels[iframeId]})`;
+        }
+
+        function zoomImage(containerId, factor) {
+            const container = document.getElementById(containerId);
+            const content = container.querySelector('.zoom-content');
+            let currentScale = parseFloat(content.getAttribute('data-scale')) || 1;
+            let newScale = Math.max(0.5, Math.min(currentScale + factor, 3)); // rango 0.5 a 3
+            content.style.transform = `scale(${newScale})`;
+            content.setAttribute('data-scale', newScale.toFixed(2));
         }
 
         function toggleMenu() {
