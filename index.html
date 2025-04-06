@@ -117,7 +117,17 @@
         .modal iframe {
             width: 80%;
             height: 80%;
+            transform: scale(0.85); /* Reduce el tamaño visual */
+            transform-origin: center; /* Mantén el centro como referencia */
             border-radius: 10px;
+        }
+
+        .modal img {
+            max-width: 80%; /* Ajusta el ancho máximo al 80% del modal */
+            max-height: 80%; /* Ajusta la altura máxima al 80% del modal */
+            object-fit: contain; /* Asegura que la imagen mantenga sus proporciones */
+            margin: auto; /* Centra la imagen dentro del modal */
+            display: block;
         }
 
         .close-modal {
@@ -230,6 +240,18 @@
             background: rgba(0, 0, 0, 0.6);
             padding: 5px;
             border-radius: 5px;
+        }
+
+        .modal #modal-content {
+            width: 80%; /* Ajusta el ancho del contenido */
+            height: 80%; /* Ajusta la altura del contenido */
+            background: white; /* Fondo blanco para el contenido */
+            border-radius: 10px;
+            padding: 20px;
+            overflow: auto; /* Habilita el scroll si el contenido es grande */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         /* Oculta los botones en móviles */
@@ -401,72 +423,72 @@
         <h1>Mis Certificados</h1>
         
         <div class="certificados-container">
-            <div id="cert1" class="certificado" onclick="openModal('pdf1')">
+            <div id="cert1" class="certificado" >
                 <h2>Certificado de Estudios</h2>
                 <div class="zoom-container" id="zoomContainer1">
                     <div class="zoom-controls">
                         <button onclick="zoomImage('zoomContainer1', -0.1)">➖</button>
                         <button onclick="zoomImage('zoomContainer1', 0.1)">➕</button>
                     </div>
-                    <div class="zoom-content">
-                        <img src="bachiller/Breiner Correa Atucsa - DIPLOMA DE BACHILLER - UNMSM_page-0001.jpg" alt="Certificado 1">
-                        <img src="bachiller/Breiner Correa Atucsa - DIPLOMA DE BACHILLER - UNMSM_page-0002.jpg" alt="Certificado 2">
+                    <div class="zoom-content" onclick="openModal('cert1.1-img')">
+                        <img id="cert1.1-img" src="bachiller/Breiner Correa Atucsa - DIPLOMA DE BACHILLER - UNMSM_page-0001.jpg" alt="Certificado 1">
+                        <img id="cert1.2-img" src="bachiller/Breiner Correa Atucsa - DIPLOMA DE BACHILLER - UNMSM_page-0002.jpg" alt="Certificado 2">
                     </div>
                 </div>
                 <p>Certificado de bachiller en Ingeniería de Sistemas.</p>
             </div>
             
-            <div id="cert2" class="certificado" onclick="openModal('pdf2')">
+            <div id="cert2" class="certificado" >
                 <h2>Desarrollo Seguro</h2>
                 <div class="zoom-container" id="zoomContainer2">
                     <div class="zoom-controls">
                         <button onclick="zoomImage('zoomContainer2', -0.1)">➖</button>
                         <button onclick="zoomImage('zoomContainer2', 0.1)">➕</button>
                     </div>
-                    <div class="zoom-content">
-                        <img src="Desarrollo Seguro.jpg" alt="Certificado Desarrollo Seguro">
+                    <div class="zoom-content" onclick="openModal('cert2-img')">
+                        <img id="cert2-img" src="Desarrollo Seguro.jpg" alt="Certificado Desarrollo Seguro">
                     </div>
                 </div>
                 <p>Certificación en prácticas seguras de desarrollo de software.</p>
             </div>
             
-            <div id="cert3" class="certificado" onclick="openModal('pdf3')">
+            <div id="cert3" class="certificado" >
                 <h2>Certificado Scrum Fundamentals</h2>
                 <div class="zoom-container" id="zoomContainer3">
                     <div class="zoom-controls">
                         <button onclick="zoomImage('zoomContainer3', -0.1)">➖</button>
                         <button onclick="zoomImage('zoomContainer3', 0.1)">➕</button>
                     </div>
-                    <div class="zoom-content">
-                        <img src="ScrumFundamentalsCertified-BreinerRoiserCorreaAtucsa-902335.jpg" alt="Certificado Scrum Fundamentals">
+                    <div class="zoom-content" onclick="openModal('cert3-img')">
+                        <img id="cert3-img" src="ScrumFundamentalsCertified-BreinerRoiserCorreaAtucsa-902335.jpg" alt="Certificado Scrum Fundamentals">
                     </div>
                 </div>
                 <p>Fundamentos de metodologías ágiles con Scrum.</p>
             </div>
             
-            <div id="cert4" class="certificado" onclick="openModal('pdf4')">
+            <div id="cert4" class="certificado" >
                 <h2>Certificación Arquitectura SOA</h2>
                 <div class="zoom-container" id="zoomContainer4">
                     <div class="zoom-controls">
                         <button onclick="zoomImage('zoomContainer4', -0.1)">➖</button>
                         <button onclick="zoomImage('zoomContainer4', 0.1)">➕</button>
                     </div>
-                    <div class="zoom-content">
-                        <img src="Service-Oriented Architecture.jpg" alt="Certificado Arquitectura SOA">
+                    <div class="zoom-content" onclick="openModal('cert4-img')">
+                        <img id="cert4-img" src="Service-Oriented Architecture.jpg" alt="Certificado Arquitectura SOA">
                     </div>
                 </div>
                 <p>Conceptos y aplicación de Arquitectura Orientada a Servicios.</p>
             </div>
             
-            <div id="cert5" class="certificado" onclick="openModal('pdf5')">
+            <div id="cert5" class="certificado" >
                 <h2>Certificación Internet de las cosas</h2>
                 <div class="zoom-container" id="zoomContainer5">
                     <div class="zoom-controls">
                         <button onclick="zoomImage('zoomContainer5', -0.1)">➖</button>
                         <button onclick="zoomImage('zoomContainer5', 0.1)">➕</button>
                     </div>
-                    <div class="zoom-content">
-                        <img src="Internet de las cosas.jpg" alt="Certificado IoT">
+                    <div class="zoom-content" onclick="openModal('cert5-img')">
+                        <img id="cert5-img" src="Internet de las cosas.jpg" alt="Certificado IoT">
                     </div>
                 </div>
                 <p>Principios y aplicaciones del IoT.</p>
@@ -479,7 +501,7 @@
     <!-- Modal para ampliar PDFs -->
     <div id="modal" class="modal" onclick="closeModal()">
         <span class="close-modal">&times;</span>
-        <iframe id="modal-pdf"></iframe>
+        <div id="modal-content"></div>
     </div>
 
     <script>
@@ -525,13 +547,25 @@
             }
         };
 
-        function openModal(pdfId) {
-            /* document.getElementById("modal-pdf").src = document.getElementById(pdfId).src;
-            document.getElementById("modal").style.display = "flex"; */
+        function openModal(contentId) {
+            const content = document.getElementById(contentId); // Obtén el contenido dinámico
+            const modal = document.getElementById("modal");
+            const modalContent = document.getElementById("modal-content");
+
+            // Inserta el contenido dinámico en el modal
+            modalContent.innerHTML = content.outerHTML;
+
+            // Mostrar el modal
+            modal.style.display = "flex";
         }
 
         function closeModal() {
-            document.getElementById("modal").style.display = "none";
+            const modal = document.getElementById("modal");
+            const modalContent = document.getElementById("modal-content");
+
+            // Limpia el contenido del modal
+            modalContent.innerHTML = "";
+            modal.style.display = "none";
         }
 
         // Resalta la sección activa del menú al hacer scroll
